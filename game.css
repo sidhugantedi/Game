@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Lato');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: linear-gradient(-45deg, #0f8, #08f);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    color: #555;
+    font-weight: 300; 
+}
+
+
+.body-class {
+    background-color: black;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.wrapper {
+    width: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+   /* filter: hue-rotate(0deg);
+    background: linear-gradient(45deg, #B2FEFA, #0ED2F7);
+    animation: hue 25s infinite linear;*/
+}
+.player-1-panel, .player-2-panel {
+    float: left;
+    padding: 80px;
+    width: 50%;
+
+}
+.player-name {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 200;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.active .player-name::after {
+    content: "\2022";
+    font-size: 47px;
+    position: absolute;
+    color: #EB4D4D;
+    top: -14px;
+    right: 50px;
+  }
+
+
+.player-score {
+    text-align: center;
+    font-size: 70px;
+    font-weight: 100;
+    color: #EB4D4D;
+    margin-bottom: 130px;
+}
+.player-current-box {
+    background-color: #EB4D4D;
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+    padding: 10px;
+    color: #000;
+}
+.player-current-label {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #222;
+}
+.player-current-score {
+    font-size: 30px;
+}
+.active {
+    background-color: #E1E0DE;
+    /*filter: hue-rotate(0deg);
+    animation: hue 10s infinite linear;
+    background: linear-gradient(45deg, #f48, #f84);*/
+}
+
+.after-win {
+    background: linear-gradient(45deg, #f48, #f84);
+}
+
+@keyframes hue {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+.active .player-name {
+    font-weight: 300;
+}
+button {
+    position: absolute;
+    text-transform: uppercase;
+    width: 210px;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    background: none;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+    font-weight: 100;
+    border: none;
+    color: #555;
+    /*transition: background-color 0.3s, color 0.3s;*/
+}
+#dice-1 {
+    top: 120px;
+}
+#dice-2 {
+    top: 250px;
+}
+
+button:focus {
+    outline: none;
+}
+
+.btn-new {
+    top: 15%;
+    font-size: 28px;
+    margin-top: 10px;
+}
+.btn-roll {
+    top: 400px;
+    font-size: 28px;
+}
+.btn-hold {
+    top: 460px;
+    font-size: 28px;
+}
+
+
+button:hover { 
+    font-weight: 400; 
+}
+button:hover i { margin-right: 20px; }
+
+button:focus {
+    outline: none;
+}
+
+.final-score {
+    position: absolute;
+    width: 150px;
+    font-size: Lato;
+    left: 50%;
+    padding: 10px;
+    transform: translateX(-50%);
+    top: 520px;
+    text-align: center;
+    font-size: 18px;
+}
+.final-score:focus {
+    outline: none;
+}
+
+i {
+    color: #EB4D4D;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 32px;
+    line-height: 1;
+    vertical-align: text-top;
+    margin-top: 3px;
+    transition: margin 0.3s;
+}
+
+.dice {
+    position: absolute;
+    left: 50%;
+    top: 178px;
+    transform: translateX(-50%);
+    height: 100px;
+    box-shadow: 0px 10px 60px rgba(0,0,0,0.10);
+    filter: hue-rotate(0deg);
+    animation: hue 2s infinite linear;
+    background-color: orange;
+    /*background-image: linear-gradient(45deg, #f48, #f84);*/
+}
+
+.winner { background-color: #f7f7f7; }
+.winner .player-name { font-size: 40px; font-weight: 300; color: #EB4D4D; }
+.animation {
+    filter: hue-rotate(0deg);
+    background: linear-gradient(45deg, #000000, #434343);
+    /*animation: hue 10s infinite linear;*/*/
+}

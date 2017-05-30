@@ -11,6 +11,9 @@ GAME RULES:
 
 var scores, roundScore, activePlayer, gamePlaying;
 
+
+var lastDice;
+
 //see function at bottom
 init();
 
@@ -27,7 +30,13 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
 
 	//3. update the roundscore IF the rolled number is not a 1
-		if(dice !== 1) {
+	if(lastDice === 6 && dice === 6) {
+		scores[activePlayer] = 0;
+		document.querySelector('#score-' + activePlayer).textContent = '0';
+		nextPlayer();	
+
+	}
+		else if(dice !== 1) {
 			//add score
 			roundScore += dice;
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
@@ -37,6 +46,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 			//nextPlayer..check the function nextPlayer to understand
 			nextPlayer();
 		}
+		lastDice = dice;
 	}
 
 });
@@ -52,15 +62,25 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 				//update the UI 
 				//document.getElementById('score-' + activePlayer).innerHTML = scores[activePlayer];
 				document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+				var input = document.querySelector('.final-score').value;
+
+				var winningScore;
+
+				if(input) {
+					winningScore = input;
+				} else {
+					winningScore = 55;
+				}
 
 
-				//check if player won the game ==> explain by step
-// 1.if the if statement is true then display the Player name as winner;
-//2. hide the dice image after declaring the winner;
-//3. to add a class of winner ===? look into css class winner;
-//4. to avoid toggling the active class to next player, we remove the active class.
 
-				if(scores[activePlayer] >= 25) {
+				/*check if player won the game ==> explain by step
+1.if the if statement is true then display the Player name as winner;
+2. hide the dice image after declaring the winner;
+3. to add a class of winner ===? look into css class winner;
+4. to avoid toggling the active class to next player, we remove the active class.*/
+
+				if(scores[activePlayer] >= winningScore) {
 					document.querySelector('#name-'  + activePlayer).textContent = 'Winner!';
 					document.querySelector('.dice').style.display = 'none';
 					document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -87,13 +107,13 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 			activePlayer === 1 ? activePlayer = 2 : activePlayer = 1;
 			roundScore = 0;
 
-			//explanation
+			/*explanation
 
-			// if (activePlayer === 1) {
-			// 	activePlayer = 2;
-			// }else {
-			// 	activePlayer = 1
-			// }
+			 if (activePlayer === 1) {
+			 	activePlayer = 2;
+			 }else {
+			 	activePlayer = 1
+			 }    */
 
 
 			//to update the current score to zero when the dice is 1.
@@ -101,10 +121,10 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 			document.getElementById('current-2').textContent = '0';
 
 
-			//to change the active class with grey background when the player is changed.
-			//the below code only changes from player 1 to player 2 but it doesnot changes back
-			// document.querySelector('.player-1-panel').classList.remove('active');
-			// document.querySelector('.player-2-panel').classList.add('active');
+			/*to change the active class with grey background when the player is changed.
+			 the below code only changes from player 1 to player 2 but it doesnot changes back
+			 document.querySelector('.player-1-panel').classList.remove('active');
+			 document.querySelector('.player-2-panel').classList.add('active');*/
 
 
 			//the below code toggles between player 1 and player 2
